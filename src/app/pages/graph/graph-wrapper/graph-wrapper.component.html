@@ -1,0 +1,89 @@
+<div #graphContainer class="graph-container" *ngIf="nodes.length && links.length">
+  <ngx-graph
+    class="chart"
+    [layout]="layout"
+    [links]="links"
+    [nodes]="nodes"
+    [zoomToFit$]="zoomToFit$"
+    [center$]="zoomToFit$"
+    (select)="onNodeSelect($event)"
+    [update$]="update$"
+    [curve]="curve"
+    [draggingEnabled]="false"
+    [minZoomLevel]="0.5"
+    [maxZoomLevel]="2"
+    [autoCenter]="false"
+  >
+    <ng-template #nodeTemplate let-node>
+      <svg width="140" height="160" viewBox="0 0 140 160">
+        <g
+          [attr.transform]="
+            hoveredNode === node.id && node.type !== 'theme'
+              ? 'scale(1.1)'
+              : 'scale(1)'
+          "
+          style="transform-origin: center; transition: transform 0.2s ease-out"
+        >
+          <circle
+            cx="70"
+            cy="60"
+            r="35"
+            [attr.fill]="
+              hoveredNode === node.id && node.type !== 'theme'
+                ? '#FF8C00'
+                : '#0B9A82'
+            "
+          />
+          <foreignObject x="20" y="100" width="100" height="50">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              style="
+                font-family: Arial, sans-serif;
+                color: #ffffff;
+                font-size: 14px;
+                text-align: center;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                line-height: 1.2em;
+                max-height: 2.4em;
+              "
+            >
+              {{ node.label }}
+            </div>
+          </foreignObject>
+        </g>
+        <rect
+          width="100%"
+          height="100%"
+          fill="transparent"
+          (mouseenter)="showLabelPopup(node, $event)"
+          (mouseleave)="hideLabelPopup()"
+          [style.cursor]="'pointer'"
+        ></rect>
+      </svg>
+    </ng-template>
+
+    
+  </ngx-graph>
+
+  <div class="popup" *ngIf="popupVisible">
+    {{ popupLabel }}
+  </div>
+
+  <div class="control-wrapper">
+    <button class="btn-adjust" (click)="zoomToFitGraph()">
+      <img src="assets/images/btn-adjust.svg" />
+    </button>
+  </div>
+
+  <div class="dialog-wrapper">
+    <app-base-dialog 
+      *ngIf="isModalOpen" 
+      [isOpen]="isModalOpen" 
+      (closeModal)="closeModal()" 
+      [node]="modalNode" 
+    />
+  </div>
+</div>

@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  --mat-dialog-transition-duration: 0ms !important;
+
+  ::-moz-focus-outer,
+  ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  transition: opacity 2.5s;
+  visibility: visible;
+  opacity: 1;
+  background: rgba(21, 25, 30, 1);
+}
+
+a {
+  // color: $font-color-default;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+h6 {
+  // font-family: $font-family-primary;
+  margin: 0;
+  padding: 0;
+}
+
+h1.h1 {
+  font-size: 43px;
+}
+h2.h2 {
+  font-size: 34px;
+}
+h3.h3 {
+  font-size: 30px;
+}
+h4.h4 {
+  font-size: 20px;
+}
+h5.h5 {
+  font-size: 18px;
+}
+h6.h6 {
+  font-size: 16px;
+}
+ul {
+  margin: 0;
+  padding: 0 0 0 25px;
+  list-style: disc;
+  white-space: normal;
+}
+
+p {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 1160px;
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  // @media only screen and (max-width: $tablet) {
+  //   padding: 0 10px;
+  // }
+}
