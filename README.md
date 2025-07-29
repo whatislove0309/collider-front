@@ -1,2 +1,3 @@
-# Collider
-Demo: https://app.dev03.click/
+# Collider Project 2025
+
+All rights reserved
